@@ -40,28 +40,28 @@ function App() {
         }),
       });
 
-      // ✅ Parse response
+      // Parse response
       const data = await res.json();
 
-      // ✅ LangGraph response handling
+      // LangGraph response handling
       const response = data.result || data;
 
       console.log("Backend Response:", response);
 
-      // ✅ Redux form update
+      // Redux form update
       if (response?.data) {
         dispatch(updateForm(response.data));
       }
 
-      // ✅ Default AI text
+      // Default AI text
       let aiText = `Tool used: ${response.tool}`;
 
-      // ✅ Assistant prompt
+      // Assistant prompt
       if (response.assistant_message) {
         aiText += `\n${response.assistant_message}`;
       }
 
-      // ✅ Summary tool
+      // Summary tool
       if (response.tool === "summarize_interaction") {
         aiText = "Tool used: summarize_interaction";
 
@@ -70,19 +70,19 @@ function App() {
         }
       }
 
-      // ✅ Follow-up tool
+      // Follow-up tool
       if (response.tool === "suggest_followup") {
         aiText = "Tool used: suggest_followup";
       }
 
-      // ✅ Reset tool
+      // Reset tool
       if (response.tool === "reset") {
         aiText = "Tool used: reset\nForm reset successfully.";
 
         dispatch(resetForm());
       }
 
-      // ✅ Submit tool
+      // Submit tool
       if (response.tool === "submit_interaction") {
         aiText =
           "Tool used: submit_interaction\nInteraction submitted successfully.";
@@ -90,7 +90,7 @@ function App() {
         dispatch(resetForm());
       }
 
-      // ✅ Add AI message
+      // Add AI message
       setMessages((prev) => [
         ...prev,
         {
