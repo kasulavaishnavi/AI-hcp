@@ -48,15 +48,15 @@ function App() {
 
       console.log("Backend Response:", response);
 
-      // Redux form update
+      //  Redux form update
       if (response?.data) {
         dispatch(updateForm(response.data));
       }
 
-      // Default AI text
+      //  Default AI text
       let aiText = `Tool used: ${response.tool}`;
 
-      // Assistant prompt
+      //  Assistant prompt
       if (response.assistant_message) {
         aiText += `\n${response.assistant_message}`;
       }
