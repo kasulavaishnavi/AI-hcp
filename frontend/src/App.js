@@ -28,7 +28,7 @@ function App() {
     ]);
 
     try {
-      const res = await fetch("http://localhost:8000/agent", {
+      const res = await fetch("https://ai-hcp.onrender.com/agent", {
         method: "POST",
 
         headers: {
